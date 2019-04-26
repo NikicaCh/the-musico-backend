@@ -28,7 +28,7 @@ const port = process.env.PORT || 8888;
 
 const urlDevelopment = "http://localhost:8888/callback";
 const urlProduction = "https://themusico-redirect.herokuapp.com/callback";
-let redirect_uri = urlDevelopment;
+let redirect_uri = urlProduction;
 let code = ""
 
 app.use(bodyParser.urlencoded({ extended: false }))
