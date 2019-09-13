@@ -28,7 +28,7 @@ const port = process.env.PORT || 8888;
 
 const urlDevelopment = "http://localhost:8888/callback";
 const urlProduction = "https://themusico-redirect.herokuapp.com/callback";
-let redirect_uri = urlProduction;
+let redirect_uri = urlDevelopment;
 let code = ""
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -53,7 +53,7 @@ app.get('/login', function(req, res) {
         querystring.stringify({
         response_type: 'code',
         client_id: process.env.SPOTIFY_CLIENT_ID,
-        scope: "user-modify-playback-state user-read-currently-playing user-library-modify streaming user-read-email user-follow-read user-read-private user-library-read playlist-read-private user-read-playback-state app-remote-control playlist-read-collaborative user-read-recently-played user-read-birthdate playlist-modify-public playlist-modify-private user-follow-modify user-top-read",
+        scope: "user-modify-playback-state user-read-currently-playing user-library-modify streaming user-read-email user-follow-read user-read-private user-library-read playlist-read-private user-read-playback-state app-remote-control playlist-read-collaborative user-read-recently-played user-read-birthdate playlist-modify-public playlist-modify-private user-follow-modify user-top-read playlist-modify-private user-read-private user-read-email user-read-playback-state playlist-read-private playlist-read-collaborative playlist-modify-public",
         redirect_uri
         }))
     })
@@ -77,7 +77,7 @@ app.get('/login', function(req, res) {
           access_token = body.access_token;
           refresh_token = body.refresh_token;
           genius = process.env.GENIUS_API_KEY;
-          uri = "https://themusico-official.herokuapp.com";
+          uri = "http://the-musico.com/";
           res.cookie("access",access_token)
           console.log(access_token)
           res.cookie("genius", genius)
