@@ -77,10 +77,7 @@ app.get('/login', function(req, res) {
           access_token = body.access_token;
           refresh_token = body.refresh_token;
           genius = process.env.GENIUS_API_KEY;
-          uri = "https://the-musico.com/";
-          res.cookie("access",access_token)
-          console.log(genius)
-          res.cookie("genius", genius)
+          uri = "http://the-musico.com/";
           res.redirect(`${uri}?spotify=${access_token}&genius=${genius}`)
         })
     })
