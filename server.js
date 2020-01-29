@@ -81,7 +81,7 @@ app.get('/login', function(req, res) {
           res.cookie("access",access_token)
           console.log(genius)
           res.cookie("genius", genius)
-          res.redirect(uri + `?spotify=${access_token}&genius=${genius})
+          res.redirect(`${uri}?spotify=${access_token}&genius=${genius}`)
         })
     })
 
