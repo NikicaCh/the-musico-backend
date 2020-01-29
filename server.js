@@ -112,6 +112,7 @@ app.get("/", (req, res) => {
         url: url,
         lyrics: lyrics,
         track: track,
+        genius: process.env.GENIUS_API_KEY
     }
     res.send({ scraped: object });
 });
