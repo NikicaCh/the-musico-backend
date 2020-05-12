@@ -28,7 +28,7 @@ const port = process.env.PORT || 8888;
 
 const urlDevelopment = "http://localhost:8888/callback";
 const urlProduction = "https://themusico-redirect.herokuapp.com/callback";
-let redirect_uri = urlProduction;
+let redirect_uri = urlDevelopment;
 let code = ""
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -77,7 +77,7 @@ app.get('/login', function(req, res) {
           access_token = body.access_token;
           refresh_token = body.refresh_token;
           genius = process.env.GENIUS_API_KEY;
-          uri = "http://the-musico.com/";
+          uri = "https://themusico.herokuapp.com/";
           res.redirect(`${uri}?spotify=${access_token}&genius=${genius}`)
         })
     })
