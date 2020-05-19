@@ -77,8 +77,11 @@ app.get('/login', function(req, res) {
           access_token = body.access_token;
           refresh_token = body.refresh_token;
           genius = process.env.GENIUS_API_KEY;
-          uri = "http://the-musico.com/";
-          res.redirect(`${uri}?spotify=${access_token}&genius=${genius}`)
+          uri = "https://www.the-musico.com";
+          res.cookie("access",access_token)
+          console.log(access_token)
+          res.cookie("genius", genius)
+          res.redirect(uri + "?spotify=" + access_token + "&genius=" + genius)
         })
     })
 
@@ -112,7 +115,6 @@ app.get("/", (req, res) => {
         url: url,
         lyrics: lyrics,
         track: track,
-        genius: process.env.GENIUS_API_KEY
     }
     res.send({ scraped: object });
 });
