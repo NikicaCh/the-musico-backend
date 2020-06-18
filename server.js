@@ -85,7 +85,26 @@ app.get('/login', function(req, res) {
         })
     })
 
-
+function scrap(url, req) { // recursive function
+    scrapeIt(url, {
+        lyrics: '.lyrics p'
+    })
+    .then((data) => {
+        if(data && data.data.lyrics !== "") {
+            lyrics = data.data.lyrics;
+            track = req.body.data.track;
+        } else {
+            scrap(url, req)
+        } 
+        // if(data) {
+        //     lyrics = data.data.lyrics;
+        //     track = req.body.data.track;
+        //     console.log("scraped", req.body.data, data.data)
+        // } else {
+        //     console.log("Lyrics unavailable")
+        // }
+    })
+}
 
 app.post('/', (req, res) => {
 if(req.body.data.url !== url) {
@@ -95,18 +114,7 @@ if(req.body.data.url !== url) {
     res.json();
     url = req.body.data.url;
     track = '';
-    scrapeIt(url, {
-        lyrics: '.lyrics p'
-    })
-    .then((data) => {
-        if(data) {
-            lyrics = data.data.lyrics;
-            track = req.body.data.track;
-            console.log("scraped", req.body.data.track)
-        } else {
-            console.log("Lyrics unavailable")
-        }
-    })
+    scrap(url, req)
     }
 });
 
