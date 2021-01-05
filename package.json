@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/jquery": "^3.3.38",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
