@@ -18,7 +18,7 @@
     "fetch": "^1.1.0",
     "jquery": "^3.5.1",
     "jquery-ajax": "^2.1.4",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "nodemon": "^1.19.4",
     "querystring": "^0.2.0",
     "request": "^2.88.2",
